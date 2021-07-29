@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       {
         // Test declara que extensión de archivos aplicara el loader
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         // Use es un arreglo u objeto donde dices que loader aplicaras
         use: {
           loader: "babel-loader",

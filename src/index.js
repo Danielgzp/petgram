@@ -1,4 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<h1>Seguimos con el curso avanzado!</h1>, document.getElementById('app'))
+import { App } from "./routes/App.jsx";
+
+ReactDOM.render(<App />, document.getElementById("app"));

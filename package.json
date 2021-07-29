@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "start": "webpack serve --config webpack.config.js --mode development",
-    "lint": "standard"
+    "lint": "standard",
+    "vercel-build": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,8 @@
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
   },
   "standard": {
     "ignore": [
