@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Category } from "../components/Category/Category.jsx";
+import { Category } from "../components/Category";
 
 export const App = () => (
   <Category />
