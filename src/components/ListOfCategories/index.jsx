@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { Category } from "../Category";
+import { Loader } from "../Loader";
 import { List, Item } from "./styles";
 
-export const ListOfCategories = () => {
+function useCategoriesData() {
     const [categories, setCategories] = useState([]);
     const [state, setState] = useState({
         loading: false,
@@ -25,21 +26,52 @@ export const ListOfCategories = () => {
         }
     }, []);
 
-    if (state.loading) {
-        <h2>cargando</h2>;
-    }
-    if (state.error) {
-        <h2>Ocurrio un errorsito 😎</h2>;
-    }
+    return { categories, state };
+}
+
+export const ListOfCategories = () => {
+    const { categories, state } = useCategoriesData();
+    const [showFixed, setShowFixed] = useState(false);
+
+    useEffect(
+        function () {
+            const onScroll = (e) => {
+                const newShowFixed = window.scrollY > 200;
+                showFixed !== newShowFixed && setShowFixed(newShowFixed);
+            };
+
+            document.addEventListener("scroll", onScroll);
+
+            return () => document.removeEventListener("scroll", onScroll);
+        },
+        [state.fixed]
+    );
+
+    const renderList = (fixed) => (
+        <List fixed={fixed}>
+            {state.loading
+                ? [1, 2, 3, 4, 5, 6].map((category) => (
+                      <Item>
+                          <Category
+                              cover="https://i.imgur.com/w5MYG2v.gif"
+                              emoji="Loading..."
+                          />
+                          {/*Escribir Spread Operator {...category} trae todos los atributos, esto puede sustutuir la manera manual de ahcerlo asi: cover={category.cover} emoji={category.emoji}*/}
+                      </Item>
+                  ))
+                : categories.map((category) => (
+                      <Item key={category.id}>
+                          <Category {...category} />
+                          {/*Escribir Spread Operator {...category} trae todos los atributos, esto puede sustutuir la manera manual de ahcerlo asi: cover={category.cover} emoji={category.emoji}*/}
+                      </Item>
+                  ))}
+        </List>
+    );
 
     return (
-        <List>
-            {categories.map((category) => (
-                <Item key={category.id}>
-                    <Category {...category} />
-                    {/*Escribir Spread Operator {...category} trae todos los atributos, esto puede sustutuir la manera manual de ahcerlo asi: cover={category.cover} emoji={category.emoji}*/}
-                </Item>
-            ))}
-        </List>
+        <>
+            {renderList()}
+            {state.fixed && renderList(true)}
+        </>
     );
 };
