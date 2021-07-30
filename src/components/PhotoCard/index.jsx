@@ -9,22 +9,27 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     const element = useRef(null);
     const [show, setShow] = useState(false);
 
-    useEffect(
-        function () {
-            const observer = new window.IntersectionObserver(function (
-                entries
-            ) {
-                const { isIntersecting } = entries[0];
-                console.log(isIntersecting);
-                if (isIntersecting) {
-                    setShow(true);
-                    observer.disconnect();
-                }
-            });
-            observer.observe(element.current);
-        },
-        [element]
-    );
+     useEffect(
+         function () {
+             Promise.resolve(
+                 typeof window.IntersectionObserver !== "undefined"
+                     ? window.IntersectionObserver //Este operador ternario sirve para verificar si el navegador soporta el intersectionObserver, si soporta no lo carga si no lo soporta hace el import
+                     : import("intersection-observer")
+             ).then(() => {
+                 const observer = new window.IntersectionObserver(function (
+                     entries
+                 ) {
+                     const { isIntersecting } = entries[0];
+                     if (isIntersecting) {
+                         setShow(true);
+                         observer.disconnect();
+                     }
+                 });
+                 observer.observe(element.current);
+             });
+         },
+         [element]
+     );
 
     return (
         <Article ref={element}>
