@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { css } from "styled-components";
 
 import { fadeIn } from "../../styles/animations";
 
@@ -33,5 +34,13 @@ export const Button = styled.button`
   padding-top: 8px;
   & svg {
     margin-right: 4px;
+    ${(props) =>
+      props.liked &&
+      css`
+         {
+          ${fadeIn()}
+          color: red;
+        }
+      `}
   }
 `;
