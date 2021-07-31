@@ -1,4 +1,5 @@
 import React from "react";
+
 import { ImgWrapper, Img, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
@@ -20,7 +21,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
         <Article ref={element}>
             {show && (
                 <React.Fragment>
-                    <a href={`/detail/${id}`}>
+                    <a href={`/?detail=${id}`}>
                         <ImgWrapper>
                             <Img src={src} />
                         </ImgWrapper>

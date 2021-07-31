@@ -2,13 +2,12 @@
 import React from "react";
 import { useQuery, gql} from "@apollo/client";
 
-
 //COMPONENTS
 import { PhotoCard } from "../PhotoCard";
 
 const whitPhotos = gql`
-    query getPhotos {
-        photos {
+    query getPhotos($categoryId: ID) {
+        photos(categoryId: $categoryId) {
             id
             categoryId
             src
@@ -20,7 +19,9 @@ const whitPhotos = gql`
 `;
 
 export const ListOfPhotoCards = () => {
-    const { loading, error, data } = useQuery(whitPhotos);
+    const { loading, error, data } = useQuery(whitPhotos, {
+        variables: { categoryId: 3 }, //TODO: Enviar dinamicamente
+    });
 
     if (error) {
         return <h2>Internal Server Error</h2>;
