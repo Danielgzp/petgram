@@ -44,3 +44,9 @@ export const Button = styled.button`
       `}
   }
 `;
+
+// ${(props) =>
+//     props.isOver &&
+//     css`
+//       color: red;
+//     `}
