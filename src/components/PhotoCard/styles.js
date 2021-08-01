@@ -28,22 +28,7 @@ export const Img = styled.img`
   width: 100%;
 `;
 
-export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  & svg {
-    margin-right: 4px;
-    ${(props) =>
-      props.liked &&
-      css`
-         {
-          ${fadeIn()}
-          color: red;
-        }
-      `}
-  }
-`;
+
 
 // ${(props) =>
 //     props.isOver &&

@@ -4,6 +4,8 @@ import { ImgWrapper, Img, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useNearScreen } from "../../hooks/useNearScreen";
+import { FavButton } from "../FavButton";
+import { useLikePhoto } from "../../hoc/ToggleLikeMutation";
 //import { useHover } from "../../hooks/useHover";
 
 const DEFAULT_IMAGE =
@@ -15,7 +17,12 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     const [liked, setLiked] = useLocalStorage(key, false);
     //const [over, setOver] = useHover();
 
-    const Icon = liked ? MdFavorite : MdFavoriteBorder;
+    const [toggleLike] = useLikePhoto();
+    const handleFavButtonClick = () => {
+        console.log(`id de la photo ${id}`);
+        setLiked(!liked);
+        toggleLike({ variables: { input: { id: id } } });
+    };
 
     return (
         <Article ref={element}>
@@ -26,16 +33,12 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
                             <Img src={src} />
                         </ImgWrapper>
                     </a>
-                    <Button
-                        type="button"
+
+                    <FavButton
                         liked={liked}
-                        onClick={() => setLiked(!liked)}
-                        //onMouseEnter={() => setOver(true)}
-                        //onMouseLeave={() => setOver()}
-                        //isOver={over}
-                    >
-                        <Icon size="32px" /> {liked ? likes + 1 : likes} likes!
-                    </Button>
+                        likes={likes}
+                        onClick={handleFavButtonClick}
+                    />
                 </React.Fragment>
             )}
         </Article>
