@@ -18,9 +18,9 @@ const whitPhotos = gql`
     }
 `;
 
-export const ListOfPhotoCards = () => {
+export const ListOfPhotoCards = ({ categoryId }) => {
     const { loading, error, data } = useQuery(whitPhotos, {
-        variables: { categoryId: 3 }, //TODO: Enviar dinamicamente
+        variables: { categoryId }, //TODO: Enviar dinamicamente
     });
 
     if (error) {

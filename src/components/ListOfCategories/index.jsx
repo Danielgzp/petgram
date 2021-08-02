@@ -54,13 +54,18 @@ export const ListOfCategories = () => {
                           <Category
                               cover="https://i.imgur.com/w5MYG2v.gif"
                               emoji="Loading..."
+                              path={`/pet/${category.id}`}
                           />
                           {/*Escribir Spread Operator {...category} trae todos los atributos, esto puede sustutuir la manera manual de ahcerlo asi: cover={category.cover} emoji={category.emoji}*/}
                       </Item>
                   ))
                 : categories.map((category) => (
                       <Item key={category.id}>
-                          <Category {...category} />
+                          <Category
+                              Category
+                              {...category}
+                              path={`/pet/${category.id}`}
+                          />
                           {/*Escribir Spread Operator {...category} trae todos los atributos, esto puede sustutuir la manera manual de ahcerlo asi: cover={category.cover} emoji={category.emoji}*/}
                       </Item>
                   ))}
