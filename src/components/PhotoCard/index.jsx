@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 import { ImgWrapper, Img, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -6,6 +7,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useNearScreen } from "../../hooks/useNearScreen";
 import { FavButton } from "../FavButton";
 import { useLikePhoto } from "../../hoc/ToggleLikeMutation";
+
 //import { useHover } from "../../hooks/useHover";
 
 const DEFAULT_IMAGE =
@@ -28,11 +30,11 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
         <Article ref={element}>
             {show && (
                 <React.Fragment>
-                    <a href={`/?detail=${id}`}>
+                    <Link to={`/detail/${id}`}>
                         <ImgWrapper>
                             <Img src={src} />
                         </ImgWrapper>
-                    </a>
+                    </Link>
 
                     <FavButton
                         liked={liked}

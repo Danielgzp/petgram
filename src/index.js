@@ -5,6 +5,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 //APP
 import { App } from "./routes/App.jsx";
+import Context from "./Context.js";
 
 const client = new ApolloClient({
   uri: "https://petgram-danielgzp.vercel.app/graphql",
@@ -12,9 +13,11 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Context.Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Context.Provider>,
 
   document.getElementById("app")
 );

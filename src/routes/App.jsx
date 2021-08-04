@@ -7,30 +7,55 @@ import { GlobalStyle } from "../styles/GlobalStyles";
 // import { ListOfCategories } from "../components/ListOfCategories";
 // import { ListOfPhotoCards } from "../components/ListOfPhotoCards";
 import { Logo } from "../components/Logo";
-import { PhotoCardWithQuery } from "../hoc/PhotoCardsWithQuery";
 import { Home } from "../pages/Home";
+import { Detail } from "../pages/Details";
+import { NavBar } from "../components/NavBar";
+import { Favs } from "../pages/Favs";
+import { User } from "../pages/User";
+import { NotRegisteredUser } from "../pages/NotRegisteredUser";
+
+import Context from "../Context";
+
+const UserLogged = ({ children }) => {
+    return children({ isAuth: false });
+};
 
 export const App = () => {
-    const urlParams = new window.URLSearchParams(window.location.search);
-    const detailId = urlParams.get("detail");
-
     return (
         <div>
             <GlobalStyle />
             <Logo />
-            {detailId ? (
-                <PhotoCardWithQuery id={detailId} />
-            ) : (
-                <Router>
-                    <Home path="/" />
-                    <Home path="/pet/:categoryId" />
-                </Router>
-            )}
+
+            <Router>
+                <Home path="/" />
+                <Home path="/pet/:categoryId" />
+                <Detail exact path="/detail/:detailId" />
+            </Router>
+
+            <Context.Consumer>
+                {({ isAuth }) =>
+                    isAuth ? (
+                        <Router>
+                            <Favs path="/favs" />
+                            <User path="/user" />
+                        </Router>
+                    ) : (
+                        <Router>
+                            <NotRegisteredUser path="/favs" />
+                            <NotRegisteredUser path="/user" />
+                            {/* <NotRegisteredUser default path="/register" /> */}
+                        </Router>
+                    )
+                }
+            </Context.Consumer>
+
+            <NavBar />
         </div>
     );
 };
 
-{/* <BrowserRouter>
+{
+    /* <BrowserRouter>
     <GlobalStyle />
     <Logo />
     <Switch>
@@ -51,4 +76,5 @@ export const App = () => {
             </>
         )}
     </Switch>
-</BrowserRouter>; */}
+</BrowserRouter>; */
+}
