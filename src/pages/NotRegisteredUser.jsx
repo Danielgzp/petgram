@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { useContext } from "react";
 
-import Context from '../Context'
+import { useAuthContext } from "../hooks/Context";
 
-export const NotRegisteredUser = () => (
-    <Context.Consumer>
-        {({ activateAuth }) => {
-            return (
-                <form onSubmit={activateAuth}>
-                    <button>Iniciar sesión</button>
-                </form>
-            );
-        }}
-    </Context.Consumer>
-);
+export const NotRegisteredUser = () => {
+    const { activateUser } = useAuthContext();
 
+    return (
+        <form onSubmit={activateUser}>
+            <button>Iniciar sesión</button>
+        </form>
+    );
+};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Router } from "@reach/router";
@@ -14,13 +14,11 @@ import { Favs } from "../pages/Favs";
 import { User } from "../pages/User";
 import { NotRegisteredUser } from "../pages/NotRegisteredUser";
 
-import Context from "../Context";
-
-const UserLogged = ({ children }) => {
-    return children({ isAuth: false });
-};
+import { useAuthContext } from "../hooks/Context";
 
 export const App = () => {
+    const { isAuth } = useAuthContext();
+
     return (
         <div>
             <GlobalStyle />
@@ -31,23 +29,20 @@ export const App = () => {
                 <Home path="/pet/:categoryId" />
                 <Detail exact path="/detail/:detailId" />
             </Router>
-
-            <Context.Consumer>
-                {({ isAuth }) =>
-                    isAuth ? (
-                        <Router>
-                            <Favs path="/favs" />
-                            <User path="/user" />
-                        </Router>
-                    ) : (
-                        <Router>
-                            <NotRegisteredUser path="/favs" />
-                            <NotRegisteredUser path="/user" />
-                            {/* <NotRegisteredUser default path="/register" /> */}
-                        </Router>
-                    )
-                }
-            </Context.Consumer>
+            <>
+                {isAuth ? (
+                    <Router>
+                        <Favs path="/favs" />
+                        <User path="/user" />
+                    </Router>
+                ) : (
+                    <Router>
+                        <NotRegisteredUser path="/favs" />
+                        <NotRegisteredUser path="/user" />
+                        {/* <NotRegisteredUser default path="/register" /> */}
+                    </Router>
+                )}
+            </>
 
             <NavBar />
         </div>
