@@ -12,7 +12,8 @@ import { Detail } from "../pages/Details";
 import { NavBar } from "../components/NavBar";
 import { Favs } from "../pages/Favs";
 import { User } from "../pages/User";
-import { NotRegisteredUser } from "../pages/NotRegisteredUser";
+import { Login } from "../pages/Login";
+import { RegisterUser } from "../pages/RegisterUser";
 
 import { useAuthContext } from "../hooks/Context";
 
@@ -37,8 +38,8 @@ export const App = () => {
                     </Router>
                 ) : (
                     <Router>
-                        <NotRegisteredUser path="/favs" />
-                        <NotRegisteredUser path="/user" />
+                        <Login path="/sesion" />
+                        <RegisterUser exact path="/user/register" />
                         {/* <NotRegisteredUser default path="/register" /> */}
                     </Router>
                 )}

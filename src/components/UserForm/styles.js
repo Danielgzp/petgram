@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as LinkRouter } from "@reach/router";
 
 export const Form = styled.form`
   padding: 16px 0;
@@ -25,6 +26,9 @@ export const Button = styled.button`
   display: block;
   width: 100%;
   text-align: center;
+  &:hover{
+    background: purple;
+  }
 
   /* &[disabled] {
     opacity: 0.3;
@@ -40,6 +44,19 @@ export const Title = styled.h2`
 export const Error = styled.span`
   color: red;
   font-size: 14px;
+`;
+
+export const Sesion = styled.h2`
+  font-size: 14px;
+`
+
+export const Link = styled(LinkRouter)`
+  text-decoration: none;
+  color: #8d00ff;
+  font-size: 16px;
+  &:hover {
+    color: purple;
+  }
 `;
 
 // Este es un espinne to wapo para cuando este cargando

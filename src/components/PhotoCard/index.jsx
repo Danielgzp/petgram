@@ -8,6 +8,7 @@ import { useNearScreen } from "../../hooks/useNearScreen";
 import { FavButton } from "../FavButton";
 import { useLikePhoto } from "../../hoc/ToggleLikeMutation";
 
+
 //import { useHover } from "../../hooks/useHover";
 
 const DEFAULT_IMAGE =
@@ -19,11 +20,21 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     const [liked, setLiked] = useLocalStorage(key, false);
     //const [over, setOver] = useHover();
 
-    const [toggleLike] = useLikePhoto();
+    const [ toggleLike ] = useLikePhoto();
+    // const handleFavButtonClick = () => {
+    //     console.log(`id de la photo ${id}`);
+    //     setLiked(!liked);
+    //     toggleLike({ variables: { input: { id: id } } });
+    // };
+
     const handleFavButtonClick = () => {
-        console.log(`id de la photo ${id}`);
+        !liked && toggleLike({
+                variables: {
+                    input: { id },
+                },
+            });
+
         setLiked(!liked);
-        toggleLike({ variables: { input: { id: id } } });
     };
 
     return (
@@ -35,6 +46,8 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
                             <Img src={src} />
                         </ImgWrapper>
                     </Link>
+
+                    
 
                     <FavButton
                         liked={liked}

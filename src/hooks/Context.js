@@ -8,8 +8,10 @@ export function useAuthContext() {
 
 export function AuthProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
-  function activateUser() {
-    return setIsAuth(!isAuth);
+
+  function activateUser(token) {
+    setIsAuth(true);
+    window.sessionStorage.setItem("token", token);
   }
 
   const value = {
