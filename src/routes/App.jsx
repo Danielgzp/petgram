@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Router } from "@reach/router";
+import { Router, Redirect } from "@reach/router";
 
 import { GlobalStyle } from "../styles/GlobalStyles";
 // import { ListOfCategories } from "../components/ListOfCategories";
@@ -14,8 +14,10 @@ import { Favs } from "../pages/Favs";
 import { User } from "../pages/User";
 import { Login } from "../pages/Login";
 import { RegisterUser } from "../pages/RegisterUser";
+import { NotFound } from "../pages/NotFound";
 
 import { useAuthContext } from "../hooks/Context";
+
 
 export const App = () => {
     const { isAuth } = useAuthContext();
@@ -29,8 +31,15 @@ export const App = () => {
                 <Home path="/" />
                 <Home path="/pet/:categoryId" />
                 <Detail exact path="/detail/:detailId" />
+                {!isAuth && <Login path="/login" />}
+                {!isAuth && <Redirect from="/favs" to="/login" />}
+                {!isAuth && <Redirect from="/user" to="/login" />}
+                {isAuth && <Redirect from="/login" to="/" />}
+                <Favs path="/favs" />
+                <User path="/user" />
+                <NotFound default />
             </Router>
-            <>
+             {/* <>
                 {isAuth ? (
                     <Router>
                         <Favs path="/favs" />
@@ -40,10 +49,10 @@ export const App = () => {
                     <Router>
                         <Favs path="/favs" />
                         <Login path="/user" />
-                        {/* <NotRegisteredUser default path="/register" /> */}
+                        // <NotRegisteredUser default path="/register" /> 
                     </Router>
                 )}
-            </>
+            </>  */}
 
             <NavBar />
         </div>
