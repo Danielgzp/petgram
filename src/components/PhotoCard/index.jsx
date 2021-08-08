@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import PropTypes from "prop-types";
 
 import { ImgWrapper, Img, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -59,4 +60,21 @@ export const PhotoCard = ({ id, likes = 0, liked = false, src = DEFAULT_IMAGE })
             )}
         </Article>
     );
+};
+
+PhotoCard.propTypes = {
+    id: PropTypes.string.isRequired,
+    liked: PropTypes.bool.isRequired,
+    src: PropTypes.string.isRequired,
+    likes: function (props, propName, componentName) {
+        const propValue = props[propName];
+
+        if (propValue === undefined) {
+            return new Error(`${propName} value must be defined`);
+        }
+
+        if (propValue < 0) {
+            return new Error(`${propName} value must be greater than 0`);
+        }
+    },
 };
