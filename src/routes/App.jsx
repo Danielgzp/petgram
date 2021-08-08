@@ -38,8 +38,8 @@ export const App = () => {
                     </Router>
                 ) : (
                     <Router>
-                        <Login path="/sesion" />
-                        <RegisterUser exact path="/user/register" />
+                        <Favs path="/favs" />
+                        <Login path="/user" />
                         {/* <NotRegisteredUser default path="/register" /> */}
                     </Router>
                 )}

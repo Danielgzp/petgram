@@ -6,7 +6,6 @@ export const FavButton = ({ liked, likes, onClick }) => {
     const Icon = liked ? MdFavorite : MdFavoriteBorder;
     return (
         <Button
-            type="button"
             //liked={liked}
             onClick={onClick}
             //onMouseEnter={() => setOver(true)}
