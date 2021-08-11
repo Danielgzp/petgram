@@ -21,15 +21,16 @@ export const Login = () => {
 
     const errorMsg =
         state.error && "La contraseña no es correcta o el usuario no existe";
+    //     Swal.fire("La contraseña no es correcta o el usuario no existe");
 
     const errorMsgRegister =
-        state.error && 'AAAAAAAAAAAAA'
-        // Swal.fire({
-        //     icon: "error",
-        //     title: "El usuario ya existe o hay algún problema.",
-        //     text: "Something went wrong!",
-        //     //footer: '<a href="">Why do I have this issue?</a>',
-        // });
+        stateRegister.error &&
+        "El usuario ya esta registrado o ha ocurrido algun problema";
+    //Swal.fire("La contraseña no es correcta o el usuario no existe");
+    //     icon: "error",
+    //     title: "El usuario ya existe o hay algún problema.",
+    //     //footer: '<a href="">Why do I have this issue?</a>',
+    // });
 
     const onRegister = async ({ email, password }) => {
         const input = { email, password };
@@ -37,16 +38,15 @@ export const Login = () => {
         setStateRegister({ loading: true, error: null });
         try {
             await registerMutation({ variables }).then(({ data }) => {
-                console.log(data)
                 const { signup } = data;
-                console.log(signup)
             });
             setStateRegister({ loading: false, error: null });
+            Swal.fire("El usuario se ha registrado exitosamente !!!");
         } catch (error) {
             setStateRegister({ loading: false, error: error });
         }
 
-        // window.location.href = "/sesion";
+        // window.location.href = "/";
     };
 
     const onSubmit = async ({ email, password }) => {
@@ -55,23 +55,23 @@ export const Login = () => {
         setState({ loading: true, error: null });
         try {
             await loginMutation({ variables }).then(({ data }) => {
-                console.log(data);
                 const { login } = data;
                 activateUser(login);
-                console.log(login)
             });
             setState({ loading: false, error: null });
+            Swal.fire({
+                icon: "success",
+                text: "Has ingresado exitosamente!",
+            });
         } catch (error) {
             setState({ loading: false, error: error });
         }
-
-        // window.location.href = "/";
     };
 
     return (
         <>
             <UserForm
-                disabled={stateRegister.loading}
+                disabled={state.loading}
                 onSubmit={onRegister}
                 title="Regístrate"
                 error={errorMsgRegister}

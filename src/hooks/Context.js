@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 
+import Swal from "sweetalert2";
+
 const AuthContext = React.createContext();
 
 export function useAuthContext() {
@@ -21,6 +23,10 @@ export function AuthProvider({ children }) {
       setIsAuth(false);
       window.sessionStorage.removeItem("token");
       __APOLLO_CLIENT__.resetStore();
+      Swal.fire({
+        icon: "warning",
+        text: "Has cerrado la sesion!",
+      });
     },
   };
 
