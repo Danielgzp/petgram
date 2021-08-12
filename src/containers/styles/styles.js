@@ -18,5 +18,5 @@ export const Spinner = styled.div`
   border-left-color: #09f;
   margin: auto;
   animation: spin 1s ease infinite;
-  margin-top: 150px;
+  margin-top: 170px;
 `;

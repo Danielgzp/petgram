@@ -3,15 +3,20 @@ import { Link as LinkRouter } from "@reach/router";
 
 export const Form = styled.form`
   padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Input = styled.input`
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 3px;
-  margin-bottom: 8px;
-  padding: 8px 4px;
+  padding: 12px 6px;
   display: block;
-  width: 100%;
+  width: 90%;
+  font-size: 16px;
+  margin-bottom: 25px;
 
   /* &[disabled] {
     opacity: 0.3;
@@ -24,7 +29,7 @@ export const Button = styled.button`
   color: #fff;
   height: 32px;
   display: block;
-  width: 100%;
+  width: 75%;
   text-align: center;
   &:hover{
     background: purple;
@@ -37,8 +42,11 @@ export const Button = styled.button`
 
 export const Title = styled.h2`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 8px 0;
+  text-align: center;
+  color: #232327;
+  margin-bottom: 20px;
 `;
 
 export const Error = styled.span`
@@ -46,16 +54,20 @@ export const Error = styled.span`
   font-size: 14px;
 `;
 
-export const Sesion = styled.h2`
-  font-size: 14px;
+export const Sesion = styled.p`
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
 `
 
 export const Link = styled(LinkRouter)`
   text-decoration: none;
-  color: #8d00ff;
+  color: #ff8c00;
   font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   &:hover {
-    color: purple;
+    color: black;
   }
 `;
 

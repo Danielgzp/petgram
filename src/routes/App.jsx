@@ -32,7 +32,7 @@ export const App = () => {
                 <Home path="/pet/:categoryId" />
                 <Detail exact path="/detail/:detailId" />
                 {!isAuth && <Login path="/sesion" />}
-                {!isAuth && <Redirect from="/favs" to="/sesion" />}
+                {/* {!isAuth && <Redirect from="/favs" to="/sesion" />} */}
                 {!isAuth && <Redirect from="/user" to="/sesion" />}
                 {isAuth && <Redirect from="/sesion" to="/" />}
                 <Favs path="/favs" />
