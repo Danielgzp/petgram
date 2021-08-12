@@ -8,15 +8,23 @@ import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useNearScreen } from "../../hooks/useNearScreen";
 import { FavButton } from "../FavButton";
 import { useLikePhoto } from "../../hoc/ToggleLikeMutation";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useAuthContext } from "../../hooks/Context";
+import Swal from "sweetalert2";
+
 
 //import { useHover } from "../../hooks/useHover";
 
 const DEFAULT_IMAGE =
     "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
 
-export const PhotoCard = ({ id, likes = 0, liked = false, src = DEFAULT_IMAGE }) => {
+export const PhotoCard = ({
+    id,
+    likes = 0,
+    liked = false,
+    src = DEFAULT_IMAGE,
+}) => {
     const [show, element] = useNearScreen();
+    const { isAuth } = useAuthContext()
     //const key = `like-${id}`;
     //const [liked, setLiked] = useLocalStorage(key, false);
     // //const [over, setOver] = useHover();
@@ -30,14 +38,14 @@ export const PhotoCard = ({ id, likes = 0, liked = false, src = DEFAULT_IMAGE })
     // };
 
     const handleFavButtonClick = () => {
-      liked = true
-      toggleLike({
+        if(!isAuth){
+            Swal.fire('Primero debes iniciar sesion')
+        }
+        toggleLike({
             variables: {
                 input: { id },
             },
-    });
-
-    liked = true;
+        });
     };
 
     return (
@@ -55,7 +63,6 @@ export const PhotoCard = ({ id, likes = 0, liked = false, src = DEFAULT_IMAGE })
                         likes={likes}
                         onClick={handleFavButtonClick}
                     />
-                    
                 </React.Fragment>
             )}
         </Article>

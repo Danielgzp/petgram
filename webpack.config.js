@@ -10,7 +10,7 @@ module.exports = {
     filename: "main.js",
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".png"],
     alias: {
       "@components": path.resolve(__dirname, "src/components/"),
       "@styles": path.resolve(__dirname, "src/styles/"),
@@ -107,7 +107,7 @@ module.exports = {
     rules: [
       {
         // Test declara que extensión de archivos aplicara el loader
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|png)$/,
         // Use es un arreglo u objeto donde dices que loader aplicaras
         use: {
           loader: "babel-loader",

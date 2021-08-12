@@ -2,6 +2,8 @@ import { useQuery, gql } from "@apollo/client";
 import React from "react";
 import { ListOfFavs } from "../components/ListOfFavs";
 
+import { Spinner } from "./styles/styles";
+
 const GET_FAVORITES = gql`
   query getFavs {
     favs {
@@ -23,7 +25,7 @@ const FavsWithQuery = () => {
 
 export const RenderProp = () => {
   const { loading, data, error } = FavsWithQuery();
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner></Spinner>;
   if (error) return <p>Error...</p>;
   const { favs } = data;
 

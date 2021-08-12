@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   button { background: transparent; border: 0; outline: 0 }
 
   body {
-    background: #fefefe;
+    background: orange;
     height: 100vh;
     margin: 0 auto;
     max-width: 500px;
@@ -28,5 +28,6 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     min-height: 100vh;
     padding-bottom: 10px;
+    background: #fefefe;
   }
 `;

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
+
 import Swal from "sweetalert2";
 
 import { useAuthContext } from "../hooks/Context";
 import { UserForm } from "../components/UserForm";
 import { useRegisterMutation } from "../containers/useRegisterMutation";
 
-
-export const RegisterUser = (props) => {
-    console.log(props)
+export const RegisterUser = () => {
     const { activateUser } = useAuthContext();
     const { registerMutation } = useRegisterMutation();
     const [state, setState] = useState({
@@ -17,12 +16,13 @@ export const RegisterUser = (props) => {
 
     const errorMsgRegister =
         state.error &&
-        Swal.fire({
-            icon: "error",
-            title: "El usuario ya existe o hay algún problema.",
-            text: "Something went wrong!",
-            //footer: '<a href="">Why do I have this issue?</a>',
-        });
+        "El usuario ya esta registrado o ha ocurrido algun problema";
+
+    //Swal.fire("La contraseña no es correcta o el usuario no existe");
+    //     icon: "error",
+    //     title: "El usuario ya existe o hay algún problema.",
+    //     //footer: '<a href="">Why do I have this issue?</a>',
+    // });
 
     const onRegister = async ({ email, password }) => {
         const input = { email, password };
@@ -31,15 +31,23 @@ export const RegisterUser = (props) => {
         try {
             await registerMutation({ variables }).then(({ data }) => {
                 const { signup } = data;
-                activateUser(signup);
             });
+
             setState({ loading: false, error: null });
+
+            Swal.fire({
+                icon: "success",
+                text: "Usuario registrado exitosamente!",
+                html: '<a href="/sesion">Iniciar Sesion</a>',
+                //showCloseButton: true,
+                //showCancelButton: true,
+                showConfirmButton: false,
+                //confirmButtonAriaLabel: "a",
+                //focusConfirm: false,
+            });
         } catch (error) {
             setState({ loading: false, error: error });
         }
-
-        window.location.href = '/sesion'
-        
     };
 
     return (
@@ -55,11 +63,3 @@ export const RegisterUser = (props) => {
         // <h1>NotLoginedUser</h1>
     );
 };
-
-//     return (
-//         <>
-//             <UserForm title="Registrarse" onSubmit={activateAuth} />
-//             <UserForm title="Iniciar sesión" onSubmit={activateAuth} />
-//         </>
-//     );
-// };

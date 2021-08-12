@@ -31,12 +31,13 @@ export const App = () => {
                 <Home path="/" />
                 <Home path="/pet/:categoryId" />
                 <Detail exact path="/detail/:detailId" />
-                {!isAuth && <Login path="/login" />}
-                {!isAuth && <Redirect from="/favs" to="/login" />}
-                {!isAuth && <Redirect from="/user" to="/login" />}
-                {isAuth && <Redirect from="/login" to="/" />}
+                {!isAuth && <Login path="/sesion" />}
+                {!isAuth && <Redirect from="/favs" to="/sesion" />}
+                {!isAuth && <Redirect from="/user" to="/sesion" />}
+                {isAuth && <Redirect from="/sesion" to="/" />}
                 <Favs path="/favs" />
                 <User path="/user" />
+                <RegisterUser exact path="/sesion/register" component={RegisterUser} />
                 <NotFound default />
             </Router>
              {/* <>
