@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid, Image, Link } from "./styles";
+import { Grid, Image, Link, NoFavorites, NoFavoritesText } from "./styles";
 
 export const ListOfFavs = ({ favs = [] }) => {
   return (
     <div>
       {favs < 1 ? (
-        <div>
-          <p>Aún no tienes ninguna foto agregada a tus favoritos</p>
-        </div>
+        <NoFavorites>
+          <NoFavoritesText>Aún no tienes ninguna foto agregada a tus favoritos 😅</NoFavoritesText>
+        </NoFavorites>
       ) : (
         <Grid>
           {favs.map((fav) => (

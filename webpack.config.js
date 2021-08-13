@@ -8,12 +8,14 @@ module.exports = {
   output: {
     publicPath: "/",
     filename: "main.js",
+    assetModuleFilename: "assets/images/[hash][ext][query]",
   },
   resolve: {
-    extensions: [".js", ".jsx", ".png"],
+    extensions: [".js", ".jsx", ".png", ".jpg"],
     alias: {
       "@components": path.resolve(__dirname, "src/components/"),
       "@styles": path.resolve(__dirname, "src/styles/"),
+      "@images": path.resolve(__dirname, "src/assets/images"),
     },
   },
   plugins: [
@@ -30,7 +32,7 @@ module.exports = {
       //   theme_color: "#b1a",
       //   icons: [
       //     {
-      //       src: path.resolve("src/assets/icon.png"),
+      //       src: path.resolve("src/assets/images/icon.png"),
       //       sizes: [96, 128, 192, 256, 384, 512],
       //     },
       //   ],
@@ -47,7 +49,7 @@ module.exports = {
       theme_color: "#456BD9",
       // icons: [
       //   {
-      //     src: path.resolve("src/assets/icon.png"),
+      //     src: path.resolve("src/assets/images/icon.png"),
       //     size: "1024x1024",
       //     purpose: "maskable",
       //     sizes: [96, 128, 192, 256, 384, 512],
@@ -57,25 +59,25 @@ module.exports = {
       // ],
       icons: [
         {
-          src: path.resolve("src/assets/icon.png"),
+          src: path.resolve("src/assets/images/icon.png"),
           size: "192x192",
           purpose: "any maskable",
           type: "image/png",
         },
         {
-          src: path.resolve("src/assets/icon.png"),
+          src: path.resolve("src/assets/images/icon.png"),
           size: "256x256",
           purpose: "any maskable",
           type: "image/png",
         },
         {
-          src: path.resolve("src/assets/icon.png"),
+          src: path.resolve("src/assets/images/icon.png"),
           size: "384x384",
           purpose: "any maskable",
           type: "image/png",
         },
         {
-          src: path.resolve("src/assets/icon.png"),
+          src: path.resolve("src/assets/images/icon.png"),
           size: "512x512",
           purpose: "any maskable",
           type: "image/png",
@@ -107,13 +109,17 @@ module.exports = {
     rules: [
       {
         // Test declara que extensión de archivos aplicara el loader
-        test: /\.(js|jsx|png)$/,
+        test: /\.(js|jsx)$/,
         // Use es un arreglo u objeto donde dices que loader aplicaras
         use: {
           loader: "babel-loader",
         },
         // Exclude permite omitir archivos o carpetas especificas
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: "asset/resource",
       },
     ],
   },

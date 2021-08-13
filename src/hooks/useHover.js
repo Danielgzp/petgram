@@ -5,3 +5,5 @@ export function useHover() {
 
   return [value, setValue];
 }
+
+// este solo es un archivo para ejemplo, no ahce anda en el proyecto

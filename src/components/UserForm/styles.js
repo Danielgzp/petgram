@@ -49,9 +49,12 @@ export const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const Error = styled.span`
+export const Error = styled.p`
   color: red;
   font-size: 14px;
+  
+  width: 100%;
+  margin-left: 27.5px;
 `;
 
 export const Sesion = styled.p`

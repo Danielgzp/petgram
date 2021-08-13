@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Category } from "../Category";
 import { List, Item } from "./styles";
 
+import spinner from '../../assets/images/spinner.gif'
+
 function useCategoriesData() {
     const [categories, setCategories] = useState([]);
     const [state, setState] = useState({
@@ -52,7 +54,7 @@ const ListOfCategoriesComponent = () => {
                 ? [1, 2, 3, 4, 5, 6].map((category) => (
                       <Item>
                           <Category
-                              cover="https://i.imgur.com/w5MYG2v.gif"
+                              cover={spinner}
                               emoji="Loading..."
                               path={`/pet/${category.id}`}
                           />

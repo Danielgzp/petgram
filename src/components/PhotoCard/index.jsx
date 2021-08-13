@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 
-import { ImgWrapper, Img, Button, Article } from "./styles";
+import { ImgWrapper, Img, Button, Article, User, UserImage } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
 import { useNearScreen } from "../../hooks/useNearScreen";
@@ -21,6 +21,7 @@ export const PhotoCard = ({
     likes = 0,
     liked = false,
     src = DEFAULT_IMAGE,
+    user
 }) => {
     const [show, element] = useNearScreen();
     const { isAuth } = useAuthContext();
@@ -52,6 +53,10 @@ export const PhotoCard = ({
         <Article ref={element}>
             {show && (
                 <React.Fragment>
+                    <User>
+                        <UserImage></UserImage>
+                        <span>usuario_123</span>
+                    </User>
                     <Link to={`/detail/${id}`}>
                         <ImgWrapper>
                             <Img src={src} />

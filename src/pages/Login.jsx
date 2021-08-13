@@ -7,6 +7,8 @@ import { UserForm } from "../components/UserForm";
 import { useLoginMutation } from "../containers/useLoginMutation";
 import { useRegisterMutation } from "../containers/useRegisterMutation";
 
+import petLogo from '../assets/images/pet.png'
+
 const PetLogo = styled.div`
     width: 100%;
     display: flex;
@@ -41,9 +43,8 @@ export const Login = () => {
             });
             setState({ loading: false, error: null });
             Swal.fire({
-                position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Has ingresado correctamente",
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -55,7 +56,7 @@ export const Login = () => {
     return (
         <>
             <PetLogo>
-                <Image src="https://i.imgur.com/2EljbYZ.png" alt="Pet Logo" />
+                <Image src={petLogo} alt="Pet Logo" />
             </PetLogo>
             <UserForm
                 disabled={state.loading}

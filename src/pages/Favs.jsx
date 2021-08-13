@@ -6,6 +6,8 @@ import { Layout } from "../components/Layout";
 import { useAuthContext } from "../hooks/Context";
 import { Image, Link, Container, Subtitle } from "./styles/Favs";
 
+import miFavs from '../assets/images/mi-fav.png'
+
 
 
 
@@ -14,7 +16,7 @@ export const Favs = () => {
 
     return (
         <Layout>
-            <Image src="https://i.imgur.com/8py0kJS.png" alt="Heart" />
+            <Image src={miFavs} alt="Heart" />
             <Subtitle>These are your liked post</Subtitle>
             {!isAuth ? (
                 <Container>

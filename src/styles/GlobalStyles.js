@@ -1,5 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
+import background2 from '../assets/images/background2.jpg'
+import background from "../assets/images/background.jpg";
+
+
 export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
@@ -15,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   button { background: transparent; border: 0; outline: 0 }
 
   body {
-    background-image: url('https://i.imgur.com/nCqF453.jpg');
+    background-image: url(${background});
     height: 100vh;
     margin: 0 auto;
     max-width: 500px;

@@ -16,3 +16,6 @@ export const useFetch = (url) => {
 
   return { data: data, loading };
 };
+
+
+// este solo es un archivo para ejemplo, no ahce anda en el proyecto

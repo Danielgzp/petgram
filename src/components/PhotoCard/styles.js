@@ -8,14 +8,12 @@ export const Article = styled.article`
 `;
 
 export const ImgWrapper = styled.div`
-  border-radius: 10px;
   display: block;
   height: 0;
   overflow: hidden;
   padding: 56.25% 0 0 0;
   position: relative;
   width: 100%;
-  margin-top: 30px;
 `;
 
 export const Img = styled.img`
@@ -28,6 +26,23 @@ export const Img = styled.img`
   width: 100%;
 `;
 
+export const User = styled.span`
+  padding: 10px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  margin-top: 10px;
+`;
+
+export const UserImage = styled.div`
+  border-radius: 50%;
+  background: linear-gradient(to left, #b500b5, #ff8c00);
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+`;
 
 
 // ${(props) =>

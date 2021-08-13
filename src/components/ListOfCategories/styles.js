@@ -4,8 +4,9 @@ import { fadeIn } from "../../styles/animations";
 
 export const List = styled.ul`
   display: flex;
-  
+  margin-top: 15px;
   background-color: rgb(245, 245, 245);
+  /* background: linear-gradient(to left, orange, #ff8c00); */
   overflow-x: scroll;
   z-index: 10;
   width: 100%;
@@ -38,4 +39,5 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   padding: 0 8px;
+  
 `;

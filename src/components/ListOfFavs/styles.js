@@ -16,8 +16,17 @@ export const Link = styled(LinkRouter)`
   }
 `;
 
-export const ListContainer = styled.div`
+export const NoFavorites = styled.div`
   width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const NoFavoritesText = styled.p`
+font-size: 16px;
+font-weight: 500;
 `
 
 export const Grid = styled.ul`

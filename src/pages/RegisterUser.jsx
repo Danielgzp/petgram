@@ -35,16 +35,28 @@ export const RegisterUser = () => {
 
             setState({ loading: false, error: null });
 
+            // Swal.fire({
+            //     icon: "success",
+            //     text: "Usuario registrado exitosamente!",
+            //     html: '<a href="/sesion">Iniciar Sesion</a>',
+            //     //showCloseButton: true,
+            //     //showCancelButton: true,
+            //     showConfirmButton: false,
+            //     //confirmButtonAriaLabel: "a",
+            //     //focusConfirm: false,
+            // });
+            // Swal.fire({
+            //     icon: "sucess",
+            //     text: "Usuario registrado con exito",
+            // });
             Swal.fire({
                 icon: "success",
-                text: "Usuario registrado exitosamente!",
-                html: '<a href="/sesion">Iniciar Sesion</a>',
-                //showCloseButton: true,
-                //showCancelButton: true,
+                title: "Usuario registrado con exito",
                 showConfirmButton: false,
-                //confirmButtonAriaLabel: "a",
-                //focusConfirm: false,
+                timer: 1500,
+                
             });
+            
         } catch (error) {
             setState({ loading: false, error: error });
         }
@@ -57,6 +69,7 @@ export const RegisterUser = () => {
                 onSubmit={onRegister}
                 title="Regístrate"
                 error={errorMsgRegister}
+                buttonTitle="Registrar"
             />
         </>
 
