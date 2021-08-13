@@ -11,7 +11,6 @@ import { useLikePhoto } from "../../hoc/ToggleLikeMutation";
 import { useAuthContext } from "../../hooks/Context";
 import Swal from "sweetalert2";
 
-
 //import { useHover } from "../../hooks/useHover";
 
 const DEFAULT_IMAGE =
@@ -24,7 +23,7 @@ export const PhotoCard = ({
     src = DEFAULT_IMAGE,
 }) => {
     const [show, element] = useNearScreen();
-    const { isAuth } = useAuthContext()
+    const { isAuth } = useAuthContext();
     //const key = `like-${id}`;
     //const [liked, setLiked] = useLocalStorage(key, false);
     // //const [over, setOver] = useHover();
@@ -38,14 +37,15 @@ export const PhotoCard = ({
     // };
 
     const handleFavButtonClick = () => {
-        if(!isAuth){
-            Swal.fire('Primero debes iniciar sesion')
+        if (!isAuth) {
+            Swal.fire("Primero debes iniciar sesion");
+        } else {
+            toggleLike({
+                variables: {
+                    input: { id },
+                },
+            });
         }
-        toggleLike({
-            variables: {
-                input: { id },
-            },
-        });
     };
 
     return (

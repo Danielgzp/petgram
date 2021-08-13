@@ -4,8 +4,14 @@ import { fadeIn } from "../../styles/animations";
 
 export const List = styled.ul`
   display: flex;
-  overflow: scroll;
+  
+  background-color: rgb(245, 245, 245);
+  overflow-x: scroll;
+  z-index: 10;
   width: 100%;
+  padding: 10px 10px;
+  border-bottom: 1px solid #e8e8e8;
+  border-top: 1px solid #e8e8e8;
   ${(props) =>
     props.fixed &&
     css`
@@ -24,12 +30,10 @@ export const List = styled.ul`
         z-index: 1;
         ${fadeIn()}
       }
-    `}
-
-  /* Esto sirve para ocultar el scroll*/
-  &::-webkit-scrollbar {
+    `}/* Esto sirve para ocultar el scroll*/
+  /* &::-webkit-scrollbar {
     display: none;
-  }
+  } */
 `;
 
 export const Item = styled.li`

@@ -59,12 +59,13 @@ export const Login = () => {
             </PetLogo>
             <UserForm
                 disabled={state.loading}
+                title="Iniciar Sesión con tu cuenta de Petgram 😉"
                 onSubmit={onSubmit}
-                title="Inicia Sesion con tu cuenta de Petgram"
                 error={errorMsg}
                 path="/sesion/register"
                 name="¿Aún no tienes una cuenta?"
                 register=" Regístrate"
+                buttonTitle="Iniciar Sesion"
             />
         </>
 

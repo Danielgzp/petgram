@@ -5,15 +5,21 @@ import { Grid, Image, Link } from "./styles";
 export const ListOfFavs = ({ favs = [] }) => {
   return (
     <div>
-      <Grid>
-        {favs.map((fav) => (
-          <li key={fav.id}>
-            <Link to={`/detail/${fav.id}`}>
-              <Image src={fav.src} />
-            </Link>
-          </li>
-        ))}
-      </Grid>
+      {favs < 1 ? (
+        <div>
+          <p>Aún no tienes ninguna foto agregada a tus favoritos</p>
+        </div>
+      ) : (
+        <Grid>
+          {favs.map((fav) => (
+            <li key={fav.id}>
+              <Link to={`/detail/${fav.id}`}>
+                <Image src={fav.src} />
+              </Link>
+            </li>
+          ))}
+        </Grid>
+      )}
     </div>
   );
 };

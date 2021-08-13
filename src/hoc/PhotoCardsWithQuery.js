@@ -1,6 +1,7 @@
 import React from "react";
 import { PhotoCard } from "../components/PhotoCard";
 import { gql, useQuery } from "@apollo/client";
+import { Spinner } from "../containers/styles/styles";
 
 const query = gql`
   query getSinglePhoto($id: ID!) {
@@ -26,7 +27,7 @@ export const PhotoCardWithQuery = ({ id }) => {
     return <h2>Internal Server Error</h2>;
   }
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <Spinner></Spinner>;
   }
 
   return <PhotoCard {...data.photo} />;

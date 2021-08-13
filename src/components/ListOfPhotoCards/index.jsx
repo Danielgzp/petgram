@@ -4,6 +4,7 @@ import { useQuery, gql} from "@apollo/client";
 
 //COMPONENTS
 import { PhotoCard } from "../PhotoCard";
+import { Spinner } from "../../containers/styles/styles";
 
 const whitPhotos = gql`
     query getPhotos($categoryId: ID) {
@@ -27,7 +28,7 @@ export const ListOfPhotoCards = ({ categoryId }) => {
         return <h2>Internal Server Error</h2>;
     }
     if (loading) {
-        return <h2>Loading...</h2>;
+        return <Spinner></Spinner>;
     }
 
     return (

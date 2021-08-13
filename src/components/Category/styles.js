@@ -6,7 +6,7 @@ export const Link = styled(LinkRouter)`
   flex-direction: column;
   text-align: center;
   text-decoration: none;
-  width: 75px;
+  width: 70px;
 `;
 
 export const Image = styled.img`
@@ -16,6 +16,13 @@ export const Image = styled.img`
   height: auto;
   overflow: hidden;
   object-fit: cover;
-  height: 75px;
-  width: 75px;
+  height: 70px;
+  width: 70px;
+`;
+
+export const Emoji = styled.span`
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  margin-top: 5px;
 `;

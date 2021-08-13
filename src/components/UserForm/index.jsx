@@ -4,7 +4,7 @@ import { useInputValue } from "../../hooks/useInputValue";
 import { Error, Form, Input, Title, Spinner, Link, Sesion } from "./styles";
 import { SubmitButton } from "../SubmitButton";
 
-export const UserForm = ({ disabled, error, onSubmit, title, path = "!#", name = "", register = "" }) => {
+export const UserForm = ({ disabled, error, onSubmit, title, buttonTitle, path = "!#", name = "", register = "" }) => {
     const email = useInputValue("");
     const password = useInputValue("");
 
@@ -29,12 +29,12 @@ export const UserForm = ({ disabled, error, onSubmit, title, path = "!#", name =
                     {...password}
                 />
                 {disabled ? (
-                    <SubmitButton  disabled={disabled}>
+                    <SubmitButton disabled={disabled}>
                         <Spinner></Spinner>
                     </SubmitButton>
                 ) : (
-                    <SubmitButton  disabled={disabled}>
-                        {title}
+                    <SubmitButton disabled={disabled}>
+                        {buttonTitle}
                     </SubmitButton>
                 )}
                 {/* <Button disabled={disabled}>{title}</Button> */}

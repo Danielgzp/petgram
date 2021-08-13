@@ -15,7 +15,7 @@ export const FavButton = ({ liked, likes, onClick }) => {
             //onMouseLeave={() => setOver()}
             //isOver={over}
         >
-            <Icon size="32px" /> {likes} likes!
+            <Icon size="32px" /> {likes} likes
         </Button>
     );
 };

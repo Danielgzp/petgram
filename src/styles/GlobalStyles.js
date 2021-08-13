@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   button { background: transparent; border: 0; outline: 0 }
 
   body {
-    background: #faac34be;
+    background-image: url('https://i.imgur.com/nCqF453.jpg');
     height: 100vh;
     margin: 0 auto;
     max-width: 500px;
