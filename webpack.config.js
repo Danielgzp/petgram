@@ -2,17 +2,12 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifestPlugin = require("webpack-pwa-manifest");
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-const express = require("express");
-const app = express();
-const path = require("path");
-
-app.use(express.static(path.join(__dirname, "public")));
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    publicPath: "/",
-    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js",
     assetModuleFilename: "assets/images/[hash][ext][query]",
   },
   resolve: {
@@ -25,8 +20,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "index.html",
+      // CONFIGURACIÓN DEL PLUGIN
+      inject: true, // INYECTA EL BUNDLE AL TEMPLATE HTML
+      template: "./public/index.html", // LA RUTA AL TEMPLATE HTML
+      filename: "./index.html", // NOMBRE FINAL DEL ARCHIVO
     }),
     new WebpackPwaManifestPlugin({
       //   name: "Petgram - Tu app de ftoos de mascotas",
