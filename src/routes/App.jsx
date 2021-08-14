@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-
-// import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from "react";
 import { Router, Redirect } from "@reach/router";
 
 import { GlobalStyle } from "../styles/GlobalStyles";
-// import { ListOfCategories } from "../components/ListOfCategories";
-// import { ListOfPhotoCards } from "../components/ListOfPhotoCards";
+
 import { Logo } from "../components/Logo";
 import { Home } from "../pages/Home";
 import { Detail } from "../pages/Details";
@@ -15,7 +12,6 @@ import { User } from "../pages/User";
 import { Login } from "../pages/Login";
 import { RegisterUser } from "../pages/RegisterUser";
 import { NotFound } from "../pages/NotFound";
-
 import { useAuthContext } from "../hooks/Context";
 
 
@@ -23,7 +19,7 @@ export const App = () => {
     const { isAuth } = useAuthContext();
 
     return (
-        <div>
+        <>
             <GlobalStyle />
             <Logo />
 
@@ -56,7 +52,7 @@ export const App = () => {
             </>  */}
 
             <NavBar />
-        </div>
+        </>
     );
 };
 

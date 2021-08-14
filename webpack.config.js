@@ -24,19 +24,6 @@ module.exports = {
       filename: "index.html",
     }),
     new WebpackPwaManifestPlugin({
-      //   name: "Petgram - Tu app de ftoos de mascotas",
-      //   shortname: "Petgram 🐶",
-      //   description:
-      //     "Con Petgram puedes encontrar fotos de animales domésticos my fácilmente",
-      //   background_color: "#fff",
-      //   theme_color: "#b1a",
-      //   icons: [
-      //     {
-      //       src: path.resolve("src/assets/images/icon.png"),
-      //       sizes: [96, 128, 192, 256, 384, 512],
-      //     },
-      //   ],
-      // }),
       filename: "manifest.webmanifest",
       name: "Petgram - Tu app de fotos de mascotas",
       shortname: "Petgram 🐶",
@@ -48,16 +35,6 @@ module.exports = {
       scope: "/",
       background_color: "#456BD9",
       theme_color: "#456BD9",
-      // icons: [
-      //   {
-      //     src: path.resolve("src/assets/images/icon.png"),
-      //     size: "1024x1024",
-      //     purpose: "maskable",
-      //     sizes: [96, 128, 192, 256, 384, 512],
-      //     destination: path.join("Icons"),
-      //     ios: true,
-      //   },
-      // ],
       icons: [
         {
           src: path.resolve("src/assets/images/icon.png"),
