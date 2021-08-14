@@ -2,6 +2,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifestPlugin = require("webpack-pwa-manifest");
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const express = require("express");
+const app = express();
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "public")));
 
 module.exports = {
   entry: "./src/index.js",
