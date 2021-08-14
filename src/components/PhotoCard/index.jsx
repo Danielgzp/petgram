@@ -46,6 +46,7 @@ export const PhotoCard = ({
                     input: { id },
                 },
             });
+            liked = true
         }
     };
 

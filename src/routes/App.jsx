@@ -34,7 +34,7 @@ export const App = () => {
                 {!isAuth && <Login path="/sesion" />} 
                 {/* {!isAuth && <Redirect from="/favs" to="/sesion" />} */}
                 {!isAuth && <Redirect from="/user" to="/sesion" />}
-                {/* {isAuth && <Redirect from="/sesion" to="/" />} */}
+                {isAuth && <Redirect from="/sesion" to="/" />}
                 <Favs path="/favs" />
                 <User path="/user" />
                 <RegisterUser exact path="/sesion/register" component={RegisterUser} />

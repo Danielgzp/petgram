@@ -21,7 +21,8 @@ export const Favs = () => {
             {!isAuth ? (
                 <Container>
                     <p>
-                        Para ver tus fotos favoritas primero tienes que <Link to="/sesion">Iniciar Sesion</Link> 
+                        Para ver tus fotos favoritas primero tienes que
+                        <Link to="/sesion">  Iniciar Sesion</Link>
                     </p>
                 </Container>
             ) : (

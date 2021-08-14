@@ -57,6 +57,7 @@ const ListOfCategoriesComponent = () => {
                               cover={spinner}
                               emoji="Loading..."
                               path={`/pet/${category.id}`}
+                              key={category.id}
                           />
                           {/*Escribir Spread Operator {...category} trae todos los atributos, esto puede sustutuir la manera manual de ahcerlo asi: cover={category.cover} emoji={category.emoji}*/}
                       </Item>

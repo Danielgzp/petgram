@@ -25,9 +25,11 @@ const FavsWithQuery = () => {
 
 export const RenderProp = () => {
   const { loading, data, error } = FavsWithQuery();
+  console.log(data)
   if (loading) return <Spinner></Spinner>;
   if (error) return <p>Error...</p>;
   const { favs } = data;
+  console.log(favs);
 
   return <ListOfFavs favs={favs} />;
 };

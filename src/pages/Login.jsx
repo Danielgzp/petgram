@@ -7,17 +7,17 @@ import { UserForm } from "../components/UserForm";
 import { useLoginMutation } from "../containers/useLoginMutation";
 import { useRegisterMutation } from "../containers/useRegisterMutation";
 
-import petLogo from '../assets/images/pet.png'
+import petLogo from "../assets/images/pet.png";
 
 const PetLogo = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 20px;
-`
+`;
 const Image = styled.img`
     width: 100px;
-`
+`;
 
 export const Login = () => {
     const { activateUser } = useAuthContext();
@@ -26,11 +26,10 @@ export const Login = () => {
         loading: false,
         error: null,
     });
-    
+
     const errorMsg =
         state.error && "La contraseña no es correcta o el usuario no existe";
     //     Swal.fire("La contraseña no es correcta o el usuario no existe");
-
 
     const onSubmit = async ({ email, password }) => {
         const input = { email, password };
