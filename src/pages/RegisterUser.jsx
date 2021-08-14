@@ -56,7 +56,7 @@ export const RegisterUser = () => {
                 timer: 1500,
                 
             });
-            setTimeout(() => (window.location.href = "/sesion"), 1500);
+            //setTimeout(() => (window.location.href = "/sesion"), 1500);
             
         } catch (error) {
             setState({ loading: false, error: error });
