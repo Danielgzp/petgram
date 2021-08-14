@@ -2,11 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifestPlugin = require("webpack-pwa-manifest");
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-const express = require("express");
-const app = express();
-const path = require("path");
-
-app.use(express.static(path.join(__dirname, "public")));
 
 module.exports = {
   entry: "./src/index.js",
@@ -43,9 +38,10 @@ module.exports = {
       //   ],
       // }),
       filename: "manifest.webmanifest",
-      name: "IntaPlatzi",
+      name: "Petgram - Tu app de fotos de mascotas",
+      shortname: "Petgram 🐶",
       description:
-        "Tu app preferida para encontrar esas mascotas que tanto te encantan",
+        "Con Petgram puedes encontrar fotos de animales domésticos my fácilmente",
       orientation: "portrait",
       display: "standalone",
       start_url: "/",
