@@ -10,15 +10,22 @@ export function useAuthContext() {
 
 export function AuthProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
+  const [isRegister, setIsRegister] = useState(false)
 
   function activateUser(token) {
     setIsAuth(true);
     window.sessionStorage.setItem("token", token);
   }
 
+  function activateRegister(register) {
+    setIsRegister(register)
+  }
+
   const value = {
     isAuth,
+    isRegister,
     activateUser,
+    activateRegister,
     removeUser: () => {
       setIsAuth(false);
       window.sessionStorage.removeItem("token");

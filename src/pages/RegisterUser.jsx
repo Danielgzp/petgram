@@ -7,7 +7,7 @@ import { UserForm } from "../components/UserForm";
 import { useRegisterMutation } from "../containers/useRegisterMutation";
 
 export const RegisterUser = () => {
-    const { activateUser } = useAuthContext();
+    const { activateRegister } = useAuthContext();
     const { registerMutation } = useRegisterMutation();
     const [state, setState] = useState({
         loading: false,
@@ -31,6 +31,7 @@ export const RegisterUser = () => {
         try {
             await registerMutation({ variables }).then(({ data }) => {
                 const { signup } = data;
+                activateRegister(true)
             });
 
             setState({ loading: false, error: null });
@@ -61,6 +62,7 @@ export const RegisterUser = () => {
         } catch (error) {
             setState({ loading: false, error: error });
         }
+
     };
 
     return (

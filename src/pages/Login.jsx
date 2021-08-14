@@ -20,12 +20,13 @@ const Image = styled.img`
 `;
 
 export const Login = () => {
-    const { activateUser } = useAuthContext();
+    const { activateUser, activateRegister } = useAuthContext();
     const { loginMutation } = useLoginMutation();
     const [state, setState] = useState({
         loading: false,
         error: null,
     });
+    activateRegister(false)
 
     const errorMsg =
         state.error && "La contraseña no es correcta o el usuario no existe";

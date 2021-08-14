@@ -14,10 +14,9 @@ import { RegisterUser } from "../pages/RegisterUser";
 import { NotFound } from "../pages/NotFound";
 import { useAuthContext } from "../hooks/Context";
 
-
 export const App = () => {
-    const { isAuth } = useAuthContext();
-
+    const { isAuth, isRegister } = useAuthContext();
+    
     return (
         <>
             <GlobalStyle />
@@ -27,16 +26,24 @@ export const App = () => {
                 <Home path="/" />
                 <Home path="/pet/:categoryId" />
                 <Detail exact path="/detail/:detailId" />
-                {!isAuth && <Login path="/sesion" />} 
+                {!isAuth && <Login path="/sesion" />}
                 {/* {!isAuth && <Redirect from="/favs" to="/sesion" />} */}
                 {!isAuth && <Redirect from="/user" to="/sesion" />}
                 {isAuth && <Redirect from="/sesion" to="/" />}
+                {isRegister && (
+                    <Redirect from="/sesion/register" to="/sesion" />
+                )}
                 <Favs path="/favs" />
                 <User path="/user" />
-                <RegisterUser exact path="/sesion/register" component={RegisterUser} />
+                <RegisterUser
+                    exact
+                    path="/sesion/register"
+                    component={RegisterUser}
+                />
                 <NotFound default />
             </Router>
-             {/* <>
+            
+            {/* <>
                 {isAuth ? (
                     <Router>
                         <Favs path="/favs" />
