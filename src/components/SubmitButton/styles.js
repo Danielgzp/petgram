@@ -12,6 +12,11 @@ export const Button = styled.button`
   font-weight: 500;
   letter-spacing: 0.5px;
   margin-top: 25px;
+  @media (max-height: 620px) {
+    margin-top: 5px;
+    height: 40px;
+    font-size: 14px;
+  }
   cursor: pointer;
   &[disabled] {
     opacity: 0.3;

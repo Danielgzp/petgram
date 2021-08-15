@@ -13,10 +13,13 @@ const PetLogo = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 `;
 const Image = styled.img`
     width: 100px;
+    @media (max-height: 620px) {
+        width: 80px;
+    }
 `;
 
 export const Login = () => {

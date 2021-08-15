@@ -17,6 +17,13 @@ export const Input = styled.input`
   width: 90%;
   font-size: 16px;
   margin-bottom: 25px;
+  @media (max-height: 620px) {
+    margin-top: 5px;
+    height: 40px;
+    font-size: 14px;
+    padding: 10px 5px;
+    margin-bottom: 15px;
+  }
 
   /* &[disabled] {
     opacity: 0.3;
@@ -47,6 +54,7 @@ export const Title = styled.h2`
   text-align: center;
   color: #232327;
   margin-bottom: 20px;
+  
 `;
 
 export const Error = styled.p`
@@ -93,4 +101,6 @@ export const Spinner = styled.div`
   border-left-color: #09f;
   margin: auto;
   animation: spin 1s ease infinite;
+  
 `;
+
